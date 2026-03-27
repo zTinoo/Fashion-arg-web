@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Moda Argentina | Revista Digital</title>
+  <meta name="description" content="Lo último en moda argentina: tendencias, pasarelas, streetwear y lujo. Noticias exclusivas del mundo fashion.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="main-header">
+  <div class="site-title"><a href="#">M O D A  •  A R</a></div>
+  <div class="categories-bar" id="dynamicCategoriesBar"></div>
+  <div class="top-actions">
+    <div class="search-wrapper">
+      <input type="text" id="searchInput" placeholder="Buscar noticias...">
+      <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+    <button id="shareNewsBtn" class="share-news-btn"><i class="fas fa-paper-plane"></i> Enviar noticia</button>
+    <button id="adminPanelBtn" class="admin-access-btn"><i class="fas fa-user-shield"></i> Panel Admin</button>
+    <div id="userMenu" style="position: relative;">
+      <button id="userMenuBtn" class="user-menu-btn"><i class="fas fa-user"></i> <span id="usernameDisplay">Cuenta</span></button>
+      <div id="userDropdown" style="display: none; position: absolute; right: 0; top: 100%; background: white; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 150px; z-index: 100;">
+        <div style="padding: 12px; border-bottom: 1px solid #eee;"><strong id="dropdownUser"></strong><br><span id="dropdownRole" style="font-size:12px; color:#666;"></span></div>
+        <button id="logoutBtn" style="width:100%; text-align:left; padding:12px; background:none; border:none; cursor:pointer;"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="app" class="container"></main>
+<footer><p>© 2025 Moda Argentina — Revista digital de vanguardia | Moda con identidad</p></footer>
+
+<!-- Modal Login/Register -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <h3 id="authTitle">Iniciar sesión</h3>
+    <form id="authForm">
+      <div class="form-group"><label>Usuario</label><input id="authUsername" required></div>
+      <div class="form-group"><label>Contraseña</label><input type="password" id="authPassword" required></div>
+      <div id="registerFields" style="display:none;">
+        <div class="form-group"><label>Email</label><input type="email" id="authEmail"></div>
+        <div class="form-group"><label>Confirmar contraseña</label><input type="password" id="authConfirmPassword"></div>
+      </div>
+      <button type="submit" class="btn-gold" style="width:100%;" id="authSubmitBtn">Ingresar</button>
+      <button type="button" id="toggleAuthBtn" style="margin-top:12px; width:100%; background:#eee; border:none; padding:8px; border-radius:40px;">¿No tenés cuenta? Registrate</button>
+      <button type="button" id="closeAuthModal" style="margin-top:12px; width:100%; background:#ddd; border:none; padding:8px; border-radius:40px;">Cancelar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal para enviar noticia (usuarios) -->
+<div id="submitNewsModal" class="modal">
+  <div class="modal-content">
+    <h3><i class="fas fa-share-alt"></i> Compartí tu noticia</h3>
+    <p style="margin:8px 0 16px">Completá el formulario. Será revisada por el equipo editorial.</p>
+    <form id="submitNewsForm">
+      <div class="form-group"><label>Título *</label><input id="submitTitulo" required></div>
+      <div class="form-group"><label>Subtítulo *</label><input id="submitSubtitulo" required></div>
+      <div class="form-group"><label>Categoría *</label><select id="submitCategoria" required></select></div>
+      <div class="form-group"><label>Contenido *</label><textarea id="submitContenido" rows="4" required></textarea></div>
+      <div class="form-group"><label>Autor *</label><input id="submitAutor" value="Colaborador"></div>
+      <div class="form-group"><label>Etiquetas (separadas por coma)</label><input id="submitTags" placeholder="ej: moda, tendencias"></div>
+      <div class="form-group"><label>Imagen (subí archivo)</label><input type="file" id="submitImagenFile" accept="image/*"></div>
+      <button type="submit" class="btn-gold">Enviar para revisión</button>
+      <button type="button" id="closeSubmitModal" style="margin-left:12px; background:#ccc; border:none; padding:10px 20px; border-radius:40px;">Cancelar</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
